@@ -1,0 +1,80 @@
+/*
+
+while (true){
+	
+	# set all the values from R0 to R11
+
+	for (curr = 0 ; curr < 12 ; curr++){
+
+		for (j = 0 ; j < 256 ; j++){
+
+			if ('H' is pressed):
+				set RAM[RAM[curr]] to black
+
+			else if (nothing is pressed):
+				set RAM[RAM[curr]] to white
+		
+			else:
+				repeat the loop
+		}
+	}
+}
+
+*/
+
+
+
+KEYBOARD:
+	
+	RAM[0] = 16384
+	RAM[1] = 16385
+	RAM[2] = 16386
+	RAM[3] = 16387
+	RAM[4] = 16399
+	RAM[5] = 16400
+	RAM[6] = 16401
+	RAM[7] = 16402
+	RAM[8] = 16412
+	RAM[9] = 16413
+	RAM[10] = 16414
+	RAM[11] = 16415
+
+	curr = 0
+	
+	if RAM[KBD] == 72:
+		j = -1
+		goto LOOP
+
+	elif RAM[KBD] == 0:
+		j = 0
+		goto LOOP
+
+	else:
+		goto KEYBOARD
+
+LOOP:
+	
+	RAM[RAM[curr]] = j
+	RAM[curr] += 32
+
+	i += 1
+
+	if i == 256:
+		goto CHANGE
+
+	else:
+		goto LOOP
+
+CHANGE:
+
+	i = 0
+	curr += 1
+
+	if curr == 12:
+		goto KEYBOARD
+
+	else:
+		goto LOOP
+
+
+
